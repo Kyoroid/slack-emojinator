@@ -8,6 +8,7 @@ from __future__ import print_function
 import argparse
 import os
 import re
+import glob
 from time import sleep
 
 from bs4 import BeautifulSoup
@@ -112,7 +113,11 @@ def main():
     existing_emojis = get_current_emoji_list(session)
     uploaded = 0
     skipped = 0
-    for filename in args.slackmoji_files:
+    expand_paths = []
+    for path in args.slackmoji_files:
+        expand_path = glob.glob(path)
+        expand_paths.extend(expand_path)
+    for filename in expand_paths:
         print("Processing {}.".format(filename))
         emoji_name = '{}{}{}'.format(
             args.prefix.strip(),

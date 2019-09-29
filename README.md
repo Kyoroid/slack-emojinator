@@ -30,10 +30,17 @@ To grab your Slack session cookie:
 * Find the call to `emoji` (it is most likely the very top request).
 * Scroll to `Request-Headers`, copy the value of "Cookie," and add to your `.env` file.
 
+**Linux**
 ```bash
 cp .env.example .env
 ${EDITOR} .env
 source .env
+```
+
+**Windows Powershell**
+```console
+$ cp env.ps1.example env.ps1
+$ . ./env.ps1
 ```
 
 Now you're ready to go. Use a shell glob to invoke `upload.py` with the emoji files as ARGV:
